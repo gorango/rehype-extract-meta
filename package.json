@@ -1,6 +1,6 @@
 {
   "name": "rehype-extract-meta",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "description": "HTML Meta Extraction",
   "main": "src/index.js",
   "type": "module",
@@ -18,8 +18,8 @@
   "scripts": {
     "dev": "nodemon sandbox",
     "test": "nodemon --exec tape test/*.test.js",
-    "coverage": "istanbul cover tape test/*.test.js",
-    "release": "standard-version --infile=changelog.md",
+    "coverage": "npx istanbul cover tape test/*.test.js",
+    "release": "npx standard-version --infile=changelog.md",
     "postrelease": "git push --follow-tags origin master"
   },
   "dependencies": {
@@ -27,14 +27,9 @@
     "hast-util-to-string": "^2.0.0"
   },
   "devDependencies": {
-    "istanbul": "1.1.0-alpha.1",
-    "pretty": "^2.0.0",
-    "pug": "^3.0.2",
     "rehype-parse": "^8.0.3",
     "rehype-stringify": "^9.0.2",
     "tape": "^5.3.1",
-    "to-vfile": "^7.2.2",
-    "unified": "^10.1.0",
-    "unist-util-inspect": "^7.0.0"
+    "unified": "^10.1.0"
   }
 }
