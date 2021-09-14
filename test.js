@@ -5,7 +5,7 @@ import { unified } from 'unified'
 import parseHtml from 'rehype-parse'
 import stringifyHtml from 'rehype-stringify'
 
-import plugin from '../src/index.js'
+import plugin from './src/index.js'
 
 const processor = unified()
   .use(parseHtml)

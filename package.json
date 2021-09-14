@@ -16,11 +16,8 @@
     "yarn": ">= 1.6.0"
   },
   "scripts": {
-    "dev": "nodemon sandbox",
-    "test": "nodemon --exec tape test/*.test.js",
-    "coverage": "npx istanbul cover tape test/*.test.js",
-    "release": "npx standard-version --infile=changelog.md",
-    "postrelease": "git push --follow-tags origin master"
+    "test": "node test.js",
+    "coverage": "npx c8 --check-coverage --branches 80 --functions 100 --lines 90 --statements 90 --reporter lcov node test.js"
   },
   "dependencies": {
     "hast-util-select": "^5.0.1",

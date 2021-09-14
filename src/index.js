@@ -126,9 +126,7 @@ export default function getMeta() {
         if (!node) {
           return null
         }
-        const {
-          properties: { content },
-        } = node
+        const { properties: { content } } = node
         if (content) {
           return content
         }
@@ -175,22 +173,20 @@ export default function getMeta() {
     }
 
     function getLang() {
-      const { properties } = select('html', tree)
-      return properties.hasOwnProperty('lang')
-        ? properties.lang
-        : head.children &&
-            head.children.reduce((found, { name, content, 'http-equiv': http }) => {
-              if (found) {
-                return found
-              }
-              if (name === 'lang') {
-                return content
-              }
-              if (http === 'content-language') {
-                return content
-              }
-              return found
-            }, null)
+      const { properties } = select('html', tree) || {}
+      return properties?.lang ||
+        head.children?.reduce((found, { name, content, 'http-equiv': http }) => {
+          if (found) {
+            return found
+          }
+          if (name === 'lang') {
+            return content
+          }
+          if (http === 'content-language') {
+            return content
+          }
+          return found
+        }, null)
     }
 
     function getUrl() {
