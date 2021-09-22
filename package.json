@@ -2,19 +2,26 @@
   "name": "rehype-extract-meta",
   "version": "1.0.0",
   "description": "HTML Meta Extraction",
-  "main": "src/index.js",
-  "type": "module",
-  "repository": "https://github.com/gorango/rehype-extract-meta",
-  "author": {
-    "name": "Goran Spasojevic",
-    "email": "gospaso@gmail.com"
-  },
   "license": "MIT",
-  "engines": {
-    "node": ">= 10.0.0",
-    "npm": ">= 5.6.0",
-    "yarn": ">= 1.6.0"
-  },
+  "keywords": [
+    "unist",
+    "rehype",
+    "hast",
+    "html",
+    "nlp",
+    "extract",
+    "meta"
+  ],
+  "author": "Goran Spasojevic <gospaso@gmail.com> (https://gorango.me)",
+  "repository": "https://github.com/gorango/rehype-extract-meta",
+  "bugs": "https://github.com/gorango/rehype-extract-meta/issues",
+  "sideEffects": false,
+  "type": "module",
+  "main": "src/index.js",
+  "files": [
+    "src/index.js",
+    "src/candidates.js"
+  ],
   "scripts": {
     "test": "node test.js",
     "coverage": "npx c8 --check-coverage --branches 80 --functions 100 --lines 90 --statements 90 --reporter lcov node test.js"

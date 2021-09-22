@@ -2,3 +2,5 @@ node_modules
 yarn.error
 coverage
 sandbox
+yarn.lock
+package-lock.json
