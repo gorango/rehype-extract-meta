@@ -1,6 +1,6 @@
-const TITLE_CANDIDATES = [`meta[name="title"]`, `meta[property="og:title"]`, `h1[class*='title']`, 'title']
+export const TITLE_CANDIDATES = [`meta[name="title"]`, `meta[property="og:title"]`, `h1[class*='title']`, 'title']
 
-const DATE_CANDIDATES = [
+export const DATE_CANDIDATES = [
   `meta[property='article:published_time']`,
   `meta[itemprop*='datePublished']`,
   `meta[name='date']`,
@@ -20,7 +20,7 @@ const DATE_CANDIDATES = [
   `div[class*='date']`,
 ]
 
-const AUTHOR_CANDIDATES = [
+export const AUTHOR_CANDIDATES = [
   { type: 'article', tag: `meta[property='article:author']` },
   { type: 'twitter', tag: `meta[property='twitter:creator']` },
   { type: 'og', tag: `meta[property='og:article:author']` },
@@ -28,16 +28,16 @@ const AUTHOR_CANDIDATES = [
   { type: 'creator', tag: `meta[name='creator']` },
 ]
 
-const PUBLISHER_CANDIDATES = [
+export const PUBLISHER_CANDIDATES = [
   { type: 'article', tag: `meta[property='article:publisher']` },
   { type: 'twitter', tag: `meta[property='twitter:publisher']` },
   { type: 'twitter', tag: `meta[property='twitter:site']` },
   { type: 'og', tag: `meta[property='og:site_name']` },
 ]
 
-const DESCRIPTION_CANDIDATES = [`meta[name=description]`, `meta[property='og:description']`]
+export const DESCRIPTION_CANDIDATES = [`meta[name=description]`, `meta[property='og:description']`]
 
-const IMAGE_CANDIDATES = [
+export const IMAGE_CANDIDATES = [
   `meta[property='og:image']`,
   `meta[itemprop='image']`,
   `meta[name='twitter:image:src']`,
@@ -45,20 +45,20 @@ const IMAGE_CANDIDATES = [
   `meta[name='twitter:image0']`,
 ]
 
-const KEYWORDS_CANDIDATES = [`meta[name='keywords']`]
+export const KEYWORDS_CANDIDATES = [`meta[name='keywords']`]
 
-const LANG_CANDIDATES = [
+export const LANG_CANDIDATES = [
   { tag: `html`, attr: 'lang' },
   { tag: `meta[name=lang]`, attr: 'content' },
   { tag: `meta[http-equiv=content-language]`, attr: 'content' },
 ]
 
-const URL_CANDIDATES = [
+export const URL_CANDIDATES = [
   { tag: `link[rel='canonical']`, attr: 'href' },
   { tag: `meta[property='og:url']`, attr: 'content' },
 ]
 
-const COPYRIGHT_CANDIDATES = [
+export const COPYRIGHT_CANDIDATES = [
   `p[class*='copyright']`,
   `div[class*='copyright']`,
   `span[class*='copyright']`,
@@ -68,16 +68,3 @@ const COPYRIGHT_CANDIDATES = [
   `span[id*='copyright']`,
   `li[id*='copyright']`,
 ]
-
-export default {
-  TITLE_CANDIDATES,
-  DATE_CANDIDATES,
-  AUTHOR_CANDIDATES,
-  PUBLISHER_CANDIDATES,
-  DESCRIPTION_CANDIDATES,
-  IMAGE_CANDIDATES,
-  KEYWORDS_CANDIDATES,
-  LANG_CANDIDATES,
-  URL_CANDIDATES,
-  COPYRIGHT_CANDIDATES,
-}

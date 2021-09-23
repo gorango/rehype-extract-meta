@@ -1,8 +1,6 @@
 import { select, selectAll } from 'hast-util-select'
 import { toString } from 'hast-util-to-string'
-import candidates from './candidates.js'
-
-const {
+import {
   TITLE_CANDIDATES,
   DATE_CANDIDATES,
   AUTHOR_CANDIDATES,
@@ -13,9 +11,9 @@ const {
   LANG_CANDIDATES,
   URL_CANDIDATES,
   COPYRIGHT_CANDIDATES,
-} = candidates
+} from './candidates.js'
 
-export default function getMeta() {
+export default function extractMeta() {
   return transformer
 
   function transformer(tree, file) {
@@ -35,18 +33,17 @@ export default function getMeta() {
 
     function getTitle() {
       const stringify = (selector, node) => {
-        const selectedNode = select(selector, node)
-        return toString(selectedNode || {})
+        const selectedNode = select(selector, node) || {}
+        return toString(selectedNode)
       }
 
       const metaTitle = selectAll('meta', head).find(
-        ({ properties: { property: p, name: n } }) => (p && p === 'og:title') || n === 'title',
+        ({ properties: { property: p, name: n } }) => (p === 'og:title') || n === 'title',
       )
 
-      const candidate =
-        metaTitle && metaTitle.hasOwnProperty('properties')
-          ? metaTitle.properties.content
-          : stringify('title', head) || stringify('h1', tree)
+      const candidate = metaTitle?.hasOwnProperty('properties')
+        ? metaTitle.properties.content
+        : stringify('title', head) || stringify('h1', tree)
 
       const titleDelimiters = [' | ', ' – ', ' - ', ' » ', ' : ']
       return titleDelimiters.reduce((found, d) => {
@@ -66,9 +63,7 @@ export default function getMeta() {
         if (!node) {
           return null
         }
-        const {
-          properties: { content, attr },
-        } = node
+        const { properties: { content, attr } } = node
         if (content) {
           return content
         }
@@ -89,10 +84,8 @@ export default function getMeta() {
         if (!node) {
           return null
         }
-        const {
-          properties: { content },
-        } = node
-        if (content && content.length) {
+        const { properties: { content } } = node
+        if (content?.length) {
           return content
         }
       }, null)
@@ -108,10 +101,8 @@ export default function getMeta() {
         if (!node) {
           return null
         }
-        const {
-          properties: { content },
-        } = node
-        if (content && content.length) {
+        const { properties: { content } } = node
+        if (content?.length) {
           return content
         }
       }, null)
@@ -143,9 +134,7 @@ export default function getMeta() {
         if (!node) {
           return null
         }
-        const {
-          properties: { content },
-        } = node
+        const { properties: { content } } = node
         if (content) {
           return content
         }
@@ -162,9 +151,7 @@ export default function getMeta() {
         if (!node) {
           return []
         }
-        const {
-          properties: { content },
-        } = node
+        const { properties: { content } } = node
         if (content) {
           return content.split(',').map(w => w.trim())
         }
