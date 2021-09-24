@@ -8,9 +8,6 @@
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
-Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
-
 ```
 npm install rehype-extract-meta
 ```
@@ -34,6 +31,8 @@ console.log(vfile)
 ```
 
 Running the above code with a valid `htmlString` will return a [VFile][vfile] containing the extracted contents in its `data` property.
+
+See `output.json` files in the [`/fixtures`][fixtures] folder for complete examples.
 
 ```js
 VFile {
@@ -75,5 +74,6 @@ Run `npm coverage` to produce a test coverage report.
 [size]: https://packagephobia.com/result?p=rehype-extract-meta
 [rehype]: https://github.com/rehypejs/rehype
 [vfile]: https://github.com/vfile/vfile
+[fixtures]: https://github.com/gorango/rehype-extract-meta/tree/main/fixtures
 [license]: license
 [author]: https://github.com/gorango
