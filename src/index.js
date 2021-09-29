@@ -10,7 +10,7 @@ import {
   KEYWORDS_CANDIDATES,
   LANG_CANDIDATES,
   URL_CANDIDATES,
-  COPYRIGHT_CANDIDATES,
+  COPYRIGHT_CANDIDATES
 } from './candidates.js'
 
 export default function extractMeta() {
@@ -28,7 +28,7 @@ export default function extractMeta() {
       image: getImage(),
       keywords: getKeywords(),
       lang: getLang(),
-      url: getUrl(),
+      url: getUrl()
     }
 
     function getTitle() {
@@ -38,7 +38,8 @@ export default function extractMeta() {
       }
 
       const metaTitle = selectAll('meta', head).find(
-        ({ properties: { property: p, name: n } }) => (p === 'og:title') || n === 'title',
+        ({ properties: { property: p, name: n } }) =>
+          p === 'og:title' || n === 'title'
       )
 
       const candidate = metaTitle?.hasOwnProperty('properties')
@@ -63,7 +64,9 @@ export default function extractMeta() {
         if (!node) {
           return null
         }
-        const { properties: { content, attr } } = node
+        const {
+          properties: { content, attr }
+        } = node
         if (content) {
           return content
         }
@@ -84,7 +87,9 @@ export default function extractMeta() {
         if (!node) {
           return null
         }
-        const { properties: { content } } = node
+        const {
+          properties: { content }
+        } = node
         if (content?.length) {
           return content
         }
@@ -101,7 +106,9 @@ export default function extractMeta() {
         if (!node) {
           return null
         }
-        const { properties: { content } } = node
+        const {
+          properties: { content }
+        } = node
         if (content?.length) {
           return content
         }
@@ -117,7 +124,9 @@ export default function extractMeta() {
         if (!node) {
           return null
         }
-        const { properties: { content } } = node
+        const {
+          properties: { content }
+        } = node
         if (content) {
           return content
         }
@@ -134,7 +143,9 @@ export default function extractMeta() {
         if (!node) {
           return null
         }
-        const { properties: { content } } = node
+        const {
+          properties: { content }
+        } = node
         if (content) {
           return content
         }
@@ -151,9 +162,11 @@ export default function extractMeta() {
         if (!node) {
           return []
         }
-        const { properties: { content } } = node
+        const {
+          properties: { content }
+        } = node
         if (content) {
-          return content.split(',').map(w => w.trim())
+          return content.split(',').map((w) => w.trim())
         }
         return []
       }, [])
@@ -161,19 +174,24 @@ export default function extractMeta() {
 
     function getLang() {
       const { properties } = select('html', tree) || {}
-      return properties?.lang ||
-        head.children?.reduce((found, { name, content, 'http-equiv': http }) => {
-          if (found) {
+      return (
+        properties?.lang ||
+        head.children?.reduce(
+          (found, { name, content, 'http-equiv': http }) => {
+            if (found) {
+              return found
+            }
+            if (name === 'lang') {
+              return content
+            }
+            if (http === 'content-language') {
+              return content
+            }
             return found
-          }
-          if (name === 'lang') {
-            return content
-          }
-          if (http === 'content-language') {
-            return content
-          }
-          return found
-        }, null)
+          },
+          null
+        )
+      )
     }
 
     function getUrl() {

@@ -31,9 +31,22 @@
     "hast-util-to-string": "^2.0.0"
   },
   "devDependencies": {
+    "prettier": "^2.4.1",
     "rehype-parse": "^8.0.3",
     "rehype-stringify": "^9.0.2",
     "tape": "^5.3.1",
-    "unified": "^10.1.0"
+    "unified": "^10.1.0",
+    "xo": "^0.44.0"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "semi": false,
+    "trailingComma": "none"
+  },
+  "xo": {
+    "prettier": true
   }
 }
