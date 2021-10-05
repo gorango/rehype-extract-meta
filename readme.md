@@ -12,7 +12,7 @@
 npm install rehype-extract-meta
 ```
 
-# Use
+## Use
 
 ```js
 import { unified } from 'unified'
@@ -54,7 +54,7 @@ VFile {
 }
 ```
 
-# Tests
+## Tests
 
 Run `npm test` to run tests.
 
