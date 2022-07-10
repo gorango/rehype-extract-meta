@@ -1,15 +1,15 @@
 import { select, selectAll } from 'hast-util-select'
 import { toString } from 'hast-util-to-string'
 import {
+  LANG_CANDIDATES,
   TITLE_CANDIDATES,
+  URL_CANDIDATES,
   DATE_CANDIDATES,
   AUTHOR_CANDIDATES,
   PUBLISHER_CANDIDATES,
   DESCRIPTION_CANDIDATES,
-  IMAGE_CANDIDATES,
   KEYWORDS_CANDIDATES,
-  LANG_CANDIDATES,
-  URL_CANDIDATES,
+  IMAGE_CANDIDATES,
   COPYRIGHT_CANDIDATES
 } from './candidates.js'
 
@@ -17,197 +17,63 @@ export default function extractMeta() {
   return transformer
 
   function transformer(tree, file) {
-    const head = select('head', tree)
-
     file.data = {
-      title: getTitle(),
-      date: getDate(),
-      author: getAuthor(),
-      publisher: getPublisher(),
-      description: getDescription(),
-      image: getImage(),
-      keywords: getKeywords(),
-      lang: getLang(),
-      url: getUrl()
+      lang: getValue(LANG_CANDIDATES, ['lang']),
+      title: getTitle(TITLE_CANDIDATES),
+      url: getValue(URL_CANDIDATES, ['href']),
+      date: getValue(DATE_CANDIDATES, ['dateTime']),
+      author: getValue(AUTHOR_CANDIDATES),
+      publisher: getValue(PUBLISHER_CANDIDATES),
+      description: getValue(DESCRIPTION_CANDIDATES),
+      keywords: getKeywords(KEYWORDS_CANDIDATES),
+      image: getValue(IMAGE_CANDIDATES),
+      copyright: getValue(COPYRIGHT_CANDIDATES),
     }
 
-    function getTitle() {
-      const stringify = (selector, node) => {
-        const selectedNode = select(selector, node) || {}
-        return toString(selectedNode)
-      }
+    function getValue(candidates, selectors = []) {
+      selectors = ['content', ...selectors]
+      return candidates.reduce((found, candidate) => {
+        if (found?.length) {
+          return found
+        }
+        const node = select(candidate, tree)
+        if (!node) {
+          return null
+        }
+        const result = selectors.reduce((found, selector) =>
+          found || node.properties[selector], null)
+        return result?.length ? result : toString(node)
+      }, null)
+    }
 
-      const metaTitle = selectAll('meta', head).find(
-        ({ properties: { property: p, name: n } }) =>
-          p === 'og:title' || n === 'title'
-      )
-
-      const candidate = metaTitle?.hasOwnProperty('properties')
-        ? metaTitle.properties.content
-        : stringify('title', head) || stringify('h1', tree)
-
+    function getTitle(candidates) {
+      const content = getValue(candidates)
       const titleDelimiters = [' | ', ' – ', ' - ', ' » ', ' : ']
       return titleDelimiters.reduce((found, d) => {
-        if (!found.includes(d)) {
+        if (!found?.includes(d)) {
           return found
         }
-        return found.split(d).reverse().slice(1).reverse().join(d)
-      }, candidate)
+        return found.split(d)[0]
+      }, content)
     }
 
-    function getDate() {
-      return DATE_CANDIDATES.reduce((found, candidate) => {
+    function getKeywords(candidates) {
+      return candidates.reduce((found, candidate) => {
         if (found) {
           return found
         }
-        const node = select(candidate, tree)
-        if (!node) {
+        if (candidate === 'meta[name="keywords"]') {
+          const node = select(candidate, tree)
+          if (!node) {
+            return null
+          }
+          return node.properties?.content.split(',').map((w) => w.trim())
+        }
+        const nodes = selectAll(candidate, tree)
+        if (!nodes.length) {
           return null
         }
-        const {
-          properties: { content, attr }
-        } = node
-        if (content) {
-          return content
-        }
-        if (attr) {
-          return attr
-        }
-        return toString(node)
-      }, null)
-    }
-
-    function getAuthor() {
-      return AUTHOR_CANDIDATES.reduce((found, candidate) => {
-        const { type, tag } = candidate
-        if (found || type !== 'name') {
-          return found
-        }
-        const node = select(tag, tree)
-        if (!node) {
-          return null
-        }
-        const {
-          properties: { content }
-        } = node
-        if (content?.length) {
-          return content
-        }
-      }, null)
-    }
-
-    function getPublisher() {
-      return PUBLISHER_CANDIDATES.reduce((found, candidate) => {
-        const { type, tag } = candidate
-        if (found || type !== 'og') {
-          return found
-        }
-        const node = select(tag, tree)
-        if (!node) {
-          return null
-        }
-        const {
-          properties: { content }
-        } = node
-        if (content?.length) {
-          return content
-        }
-      }, null)
-    }
-
-    function getDescription() {
-      return DESCRIPTION_CANDIDATES.reduce((found, candidate) => {
-        if (found) {
-          return found
-        }
-        const node = select(candidate, tree)
-        if (!node) {
-          return null
-        }
-        const {
-          properties: { content }
-        } = node
-        if (content) {
-          return content
-        }
-        return toString(node)
-      }, null)
-    }
-
-    function getImage() {
-      return IMAGE_CANDIDATES.reduce((found, candidate) => {
-        if (found) {
-          return found
-        }
-        const node = select(candidate, tree)
-        if (!node) {
-          return null
-        }
-        const {
-          properties: { content }
-        } = node
-        if (content) {
-          return content
-        }
-        return toString(node)
-      }, null)
-    }
-
-    function getKeywords() {
-      return KEYWORDS_CANDIDATES.reduce((found, candidate) => {
-        if (found.length) {
-          return found
-        }
-        const node = select(candidate, tree)
-        if (!node) {
-          return []
-        }
-        const {
-          properties: { content }
-        } = node
-        if (content) {
-          return content.split(',').map((w) => w.trim())
-        }
-        return []
-      }, [])
-    }
-
-    function getLang() {
-      const { properties } = select('html', tree) || {}
-      return (
-        properties?.lang ||
-        head.children?.reduce(
-          (found, { name, content, 'http-equiv': http }) => {
-            if (found) {
-              return found
-            }
-            if (name === 'lang') {
-              return content
-            }
-            if (http === 'content-language') {
-              return content
-            }
-            return found
-          },
-          null
-        )
-      )
-    }
-
-    function getUrl() {
-      return URL_CANDIDATES.reduce((found, { tag, attr }) => {
-        if (found) {
-          return found
-        }
-        const node = select(tag, head)
-        if (!node) {
-          return null
-        }
-        const prop = node.properties[attr]
-        if (prop) {
-          return prop
-        }
-        return null
+        return nodes.map(node => node.properties?.content || toString(node))
       }, null)
     }
   }
