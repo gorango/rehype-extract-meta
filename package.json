@@ -24,13 +24,14 @@
   ],
   "scripts": {
     "test": "node test.js",
-    "coverage": "npx c8 --check-coverage --branches 80 --functions 100 --lines 90 --statements 90 --reporter lcov node test.js"
+    "coverage": "npx c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov node test.js"
   },
   "dependencies": {
     "hast-util-select": "^5.0.1",
     "hast-util-to-string": "^2.0.0"
   },
   "devDependencies": {
+    "hastscript": "^7.0.2",
     "prettier": "^2.4.1",
     "rehype-parse": "^8.0.3",
     "rehype-stringify": "^9.0.2",
