@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/gorango/rehype-extract-meta/compare/v1.1.0...v2.0.0) (2022-07-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* move data to `meta` key
+
+### Bug Fixes
+
+* move data to `meta` key ([4fff013](https://github.com/gorango/rehype-extract-meta/commit/4fff013dc448fd44bdd514d938e9ac43d07951eb))
+
 ## [1.1.0](https://github.com/gorango/rehype-extract-meta/compare/v1.0.1...v1.1.0) (2022-07-10)
 
 
