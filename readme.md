@@ -32,20 +32,21 @@ console.log(vfile)
 
 Running the above code with a valid `htmlString` will return a [VFile][vfile] containing the extracted contents in its `data` property.
 
-See `output.json` files in the [`/fixtures`][fixtures] folder for complete examples.
-
 ```js
 VFile {
   data: {
-    title: '...',        // String
-    date: '...',         // Date|String
-    author: '...',       // String
-    publisher: '...',    // String
-    description: '...',  // String
-    image: '...',        // URL
-    keywords: ['...'],   // Array
-    lang: '...',         // String
-    url: '...'           // URL
+    meta: {
+      lang: '...',         // String
+      url: '...'           // URL
+      title: '...',        // String
+      date: '...',         // Date|String
+      author: '...',       // String
+      publisher: '...',    // String
+      description: '...',  // String
+      image: '...',        // URL
+      keywords: ['...'],   // Array
+      copyright: '...',    // String
+    }
   },
   messages: [],
   history: [],

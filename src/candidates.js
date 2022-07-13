@@ -5,16 +5,16 @@ export const LANG_CANDIDATES = [
   'meta[property="og:locale"]',
 ]
 
+export const URL_CANDIDATES = [
+  'link[rel="canonical"]',
+  'meta[property="og:url"]',
+]
+
 export const TITLE_CANDIDATES = [
   'title',
   'meta[name="title"]',
   'meta[property="og:title"]',
   'h1',
-]
-
-export const URL_CANDIDATES = [
-  'link[rel="canonical"]',
-  'meta[property="og:url"]',
 ]
 
 export const DATE_CANDIDATES = [
@@ -44,18 +44,18 @@ export const DESCRIPTION_CANDIDATES = [
   'meta[property="og:description"]'
 ]
 
-export const KEYWORDS_CANDIDATES = [
-  'meta[name="keywords"]',
-  'meta[property="article:tag"]',
-  'a[rel="tag"]',
-]
-
 export const IMAGE_CANDIDATES = [
   'meta[property="og:image"]',
   'meta[itemprop="image"]',
   'meta[name="twitter:image:src"]',
   'meta[name="twitter:image"]',
   'meta[name="twitter:image0"]'
+]
+
+export const KEYWORDS_CANDIDATES = [
+  'meta[name="keywords"]',
+  'meta[property="article:tag"]',
+  'a[rel="tag"]',
 ]
 
 export const COPYRIGHT_CANDIDATES = [

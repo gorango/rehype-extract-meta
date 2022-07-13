@@ -2,31 +2,31 @@ import { select, selectAll } from 'hast-util-select'
 import { toString } from 'hast-util-to-string'
 import {
   LANG_CANDIDATES,
-  TITLE_CANDIDATES,
   URL_CANDIDATES,
+  TITLE_CANDIDATES,
   DATE_CANDIDATES,
   AUTHOR_CANDIDATES,
   PUBLISHER_CANDIDATES,
   DESCRIPTION_CANDIDATES,
-  KEYWORDS_CANDIDATES,
   IMAGE_CANDIDATES,
-  COPYRIGHT_CANDIDATES
+  KEYWORDS_CANDIDATES,
+  COPYRIGHT_CANDIDATES,
 } from './candidates.js'
 
 export default function extractMeta() {
   return transformer
 
   function transformer(tree, file) {
-    file.data = {
+    file.data.meta = {
       lang: getValue(LANG_CANDIDATES, ['lang']),
-      title: getTitle(TITLE_CANDIDATES),
       url: getValue(URL_CANDIDATES, ['href']),
+      title: getTitle(TITLE_CANDIDATES),
       date: getValue(DATE_CANDIDATES, ['dateTime']),
       author: getValue(AUTHOR_CANDIDATES),
       publisher: getValue(PUBLISHER_CANDIDATES),
       description: getValue(DESCRIPTION_CANDIDATES),
-      keywords: getKeywords(KEYWORDS_CANDIDATES),
       image: getValue(IMAGE_CANDIDATES),
+      keywords: getKeywords(KEYWORDS_CANDIDATES),
       copyright: getValue(COPYRIGHT_CANDIDATES),
     }
 
