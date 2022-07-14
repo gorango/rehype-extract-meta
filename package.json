@@ -1,7 +1,7 @@
 {
   "name": "rehype-extract-meta",
   "version": "2.0.0",
-  "description": "Rehype plugin to extract meta data from an HTML page",
+  "description": "Rehype plugin to extract meta data from an HTML document",
   "license": "MIT",
   "keywords": [
     "unist",
@@ -19,8 +19,8 @@
   "type": "module",
   "main": "src/index.js",
   "files": [
-    "src/index.js",
-    "src/candidates.js"
+    "lib/",
+    "index.js"
   ],
   "scripts": {
     "test": "node test.js",

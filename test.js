@@ -1,6 +1,6 @@
 import test from 'tape'
 import { h } from 'hastscript'
-import plugin from './src/index.js'
+import plugin from './index.js'
 
 const process = plugin()
 

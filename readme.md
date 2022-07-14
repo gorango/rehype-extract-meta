@@ -4,7 +4,7 @@
 [![Coverage][coverage-badge]][coverage]
 [![Size][size-badge]][size]
 
-[Rehype][rehype] plugin to extract meta data from an HTML page.
+[Rehype][rehype] plugin to extract meta data from an HTML document.
 
 ## Install
 
