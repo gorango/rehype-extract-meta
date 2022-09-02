@@ -10,6 +10,7 @@ test('Language', t => {
   const tree2 = h('html', [h('head', [h('meta', { name: 'lang', content: 'es' })])])
   const tree3 = h('html', [h('head', [h('meta', { httpEquiv: 'content-language', content: 'fr' })])])
   const tree4 = h('html', [h('head', [h('meta', { property: 'og:locale', content: 'ch' })])])
+  const tree5 = h('html', [])
   process(tree1, file)
   t.equal('en', file.data.meta.lang)
   process(tree2, file)
@@ -18,12 +19,14 @@ test('Language', t => {
   t.equal('fr', file.data.meta.lang)
   process(tree4, file)
   t.equal('ch', file.data.meta.lang)
+  process(tree5, file)
+  t.equal('en', file.data.meta.lang)
   t.end()
 })
 
 test('Title', t => {
   const file = { data: {} }
-  const tree1 = h('html', [h('head', [h('title', 'Foo')])])
+  const tree1 = h('html', [h('head', [h('title', '\nFoo\n')])])
   const tree2 = h('html', [h('head', [h('meta', { name: 'title', content: 'Bar' })])])
   const tree3 = h('html', [h('head', [h('meta', { property: 'og:title', content: 'Baz' })])])
   const tree4 = h('html', [h('body', [h('h1', 'Qux')])])
