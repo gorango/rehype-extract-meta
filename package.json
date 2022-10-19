@@ -17,7 +17,7 @@
   "bugs": "https://github.com/gorango/rehype-extract-meta/issues",
   "sideEffects": false,
   "type": "module",
-  "main": "src/index.js",
+  "main": "index.js",
   "files": [
     "lib/",
     "index.js"
