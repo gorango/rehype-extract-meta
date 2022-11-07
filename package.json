@@ -1,6 +1,6 @@
 {
   "name": "rehype-extract-meta",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Rehype plugin to extract meta data from an HTML document",
   "license": "MIT",
   "keywords": [
