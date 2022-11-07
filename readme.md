@@ -36,16 +36,16 @@ Running the above code with a valid `htmlString` will return a [VFile][vfile] co
 VFile {
   data: {
     meta: {
-      lang: '...',         // String
-      url: '...'           // URL
-      title: '...',        // String
-      date: '...',         // Date|String
-      author: '...',       // String
-      publisher: '...',    // String
-      description: '...',  // String
-      image: '...',        // URL
-      keywords: ['...'],   // Array
-      copyright: '...',    // String
+      lang: '...',
+      url: '...',
+      title: '...',
+      date: '...',
+      author: '...',
+      publisher: '...',
+      description: '...',
+      image: '...',
+      keywords: ['...'],
+      copyright: '...',
     }
   },
   messages: [],
@@ -55,11 +55,13 @@ VFile {
 }
 ```
 
-## Tests
+## API
 
-Run `npm test` to run tests.
+This package exports a single plugin function.
 
-Run `npm coverage` to produce a test coverage report.
+### `unified().use(rehypeExtractMeta)`
+
+[Rehype][rehype] plugin to extract meta data from an HTML document.
 
 ## License
 
