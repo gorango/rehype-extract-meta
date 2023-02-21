@@ -27,11 +27,11 @@
     "coverage": "npx c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov node test.js"
   },
   "dependencies": {
-    "hast-util-select": "^5.0.2",
+    "hast-util-select": "^5.0.5",
     "hast-util-to-string": "^2.0.0"
   },
   "devDependencies": {
-    "hastscript": "^7.1.0",
-    "tape": "^5.6.1"
+    "hastscript": "^7.2.0",
+    "tape": "^5.6.3"
   }
 }
