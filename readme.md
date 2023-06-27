@@ -37,15 +37,16 @@ VFile {
   data: {
     meta: {
       lang: '...',
-      url: '...',
       title: '...',
-      date: '...',
-      author: '...',
-      publisher: '...',
       description: '...',
-      image: '...',
-      keywords: ['...'],
+      publisher: '...',
+      author: '...',
       copyright: '...',
+      keywords: ['...'],
+      updatedAt: '...',
+      url: '...',
+      altUrl: '...',
+      imageUrl: '...',
     }
   },
   messages: [],

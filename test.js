@@ -52,7 +52,7 @@ test('Title delimiter', t =>  {
   t.end()
 })
 
-test('URL', t => {
+test('Page URL', t => {
   const file = { data: {} }
   const tree1 = h('html', [h('head', [h('link', { rel: 'canonical', href: 'http://foobar.com' })])])
   const tree2 = h('html', [h('head', [h('meta', { property: 'og:url', content: 'http://bazqux.com' })])])
@@ -63,17 +63,28 @@ test('URL', t => {
   t.end()
 })
 
+test('Alternate URL', t => {
+  const file = { data: {} }
+  const tree1 = h('html', [h('head', [h('link', { rel: 'alternate', href: 'http://foobar.com/feed.rss' })])])
+  const tree2 = h('html', [h('head', [h('meta', { property: 'og:alternate', content: 'http://bazqux.com/feed.json' })])])
+  process(tree1, file)
+  t.equal('http://foobar.com/feed.rss', file.data.meta.altUrl)
+  process(tree2, file)
+  t.equal('http://bazqux.com/feed.json', file.data.meta.altUrl)
+  t.end()
+})
+
 test('Date', t => {
   const file = { data: {} }
   const tree1 = h('html', [h('head', [h('meta', { property: 'article:published_time', content: '2017-01-01' })])])
   const tree2 = h('html', [h('head', [h('meta', { name: 'date', content: '2017-01-02' })])])
   const tree3 = h('html', [h('body', [h('time', { datetime: '2017-01-03' })])])
   process(tree1, file)
-  t.equal('2017-01-01', file.data.meta.date)
+  t.equal('2017-01-01', file.data.meta.updatedAt)
   process(tree2, file)
-  t.equal('2017-01-02', file.data.meta.date)
+  t.equal('2017-01-02', file.data.meta.updatedAt)
   process(tree3, file)
-  t.equal('2017-01-03', file.data.meta.date)
+  t.equal('2017-01-03', file.data.meta.updatedAt)
   t.end()
 })
 
@@ -142,11 +153,11 @@ test('Image', t => {
   const tree2 = h('html', [h('head', [h('meta', { itemprop: 'image', content: 'http://barbaz.com/image.jpg' })])])
   const tree3 = h('html', [h('head', [h('meta', { name: 'twitter:image', content: 'http://bazqux.com/image.jpg' })])])
   process(tree1, file)
-  t.equal('http://foobar.com/image.jpg', file.data.meta.image)
+  t.equal('http://foobar.com/image.jpg', file.data.meta.imageUrl)
   process(tree2, file)
-  t.equal('http://barbaz.com/image.jpg', file.data.meta.image)
+  t.equal('http://barbaz.com/image.jpg', file.data.meta.imageUrl)
   process(tree3, file)
-  t.equal('http://bazqux.com/image.jpg', file.data.meta.image)
+  t.equal('http://bazqux.com/image.jpg', file.data.meta.imageUrl)
   t.end()
 })
 
