@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/gorango/rehype-extract-meta/compare/v2.0.5...v2.1.0) (2023-06-28)
+
+
+### Features
+
+* add alternate url, rename imageUrl, update props order ([5a11bff](https://github.com/gorango/rehype-extract-meta/commit/5a11bffd276cab20a0a5713006305cd7146cd4db))
+
 ### [2.0.5](https://github.com/gorango/rehype-extract-meta/compare/v2.0.4...v2.0.5) (2023-02-21)
 
 ### [2.0.4](https://github.com/gorango/rehype-extract-meta/compare/v2.0.3...v2.0.4) (2022-11-07)
