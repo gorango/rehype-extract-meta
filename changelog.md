@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/gorango/rehype-extract-meta/compare/v2.1.0...v3.0.0) (2024-03-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* update keys/candidates names/order
+
+### Features
+
+* add jsdoc ([1a77d28](https://github.com/gorango/rehype-extract-meta/commit/1a77d285aed28d72fafee6b30da6094d012db210))
+
+
+### Bug Fixes
+
+* add title delimiter ([004cc13](https://github.com/gorango/rehype-extract-meta/commit/004cc1304e01e867b1366bad45536bf72523a4d7))
+* update getValue with candidates an selectors ([ed54400](https://github.com/gorango/rehype-extract-meta/commit/ed544005d621749eb53a404aa1389a80b440e09d))
+* update keys/candidates names/order ([3d99c8d](https://github.com/gorango/rehype-extract-meta/commit/3d99c8d6e13a93f43355bf8bf0c806f90fd9b6e5))
+* upgrade dependencies ([d2aff5f](https://github.com/gorango/rehype-extract-meta/commit/d2aff5f6421ef26f8b4b200b16e23df7890bb7af))
+
 ## [2.1.0](https://github.com/gorango/rehype-extract-meta/compare/v2.0.5...v2.1.0) (2023-06-28)
 
 
