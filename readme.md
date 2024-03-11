@@ -2,6 +2,7 @@
 
 [![Build][build-badge]][build]
 [![Coverage][coverage-badge]][coverage]
+[![Types][types-badge]][types]
 [![Size][size-badge]][size]
 
 [Rehype][rehype] plugin to extract meta data from an HTML document.
@@ -37,16 +38,16 @@ VFile {
   data: {
     meta: {
       lang: '...',
-      title: '...',
-      description: '...',
-      publisher: '...',
-      author: '...',
-      copyright: '...',
-      keywords: ['...'],
-      updatedAt: '...',
-      url: '...',
-      altUrl: '...',
+      pageUrl: '...',
+      feedUrl: '...',
       imageUrl: '...',
+      title: '...',
+      author: '...',
+      date: '...',
+      description: '...',
+      keywords: ['...'],
+      publisher: '...',
+      copyright: '...',
     }
   },
   messages: [],
@@ -74,6 +75,8 @@ This package exports a single plugin function.
 [build]: https://github.com/gorango/rehype-extract-meta/actions
 [coverage-badge]: https://img.shields.io/codecov/c/github/gorango/rehype-extract-meta.svg
 [coverage]: https://codecov.io/github/gorango/rehype-extract-meta
+[types-badge]: https://badgen.net/npm/types/rehype-extract-meta
+[types]: https://www.npmjs.com/package/rehype-extract-meta
 [size-badge]: https://badgen.net/packagephobia/publish/rehype-extract-meta
 [size]: https://packagephobia.com/result?p=rehype-extract-meta
 [rehype]: https://github.com/rehypejs/rehype

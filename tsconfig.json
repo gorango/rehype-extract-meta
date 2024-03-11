@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "checkJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true,
+    "lib": [
+      "es2022"
+    ],
+    "module": "node16",
+    "target": "es2022"
+  },
+  "include": [
+    "**/*.js",
+    "index.d.ts"
+  ],
+  "exclude": [
+    "test.js",
+    "coverage/",
+    "node_modules/"
+  ]
+}

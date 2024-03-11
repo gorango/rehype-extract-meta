@@ -20,18 +20,25 @@
   "main": "index.js",
   "files": [
     "lib/",
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "scripts": {
     "test": "node test.js",
-    "coverage": "npx c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov node test.js"
+    "coverage": "npx c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov node test.js",
+    "build": "tsc --build --clean && tsc --build && type-coverage"
   },
   "dependencies": {
     "hast-util-select": "^6.0.2",
     "hast-util-to-string": "^3.0.0"
   },
   "devDependencies": {
+    "@types/hast": "^3.0.4",
+    "@types/vfile": "^4.0.0",
     "hastscript": "^9.0.0",
     "tape": "^5.7.5",
+    "type-coverage": "^2.27.1",
+    "typescript": "^5.4.2",
+    "vfile": "^6.0.1"
   }
 }
