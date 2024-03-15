@@ -70,6 +70,17 @@ test('URL', (t) => {
   t.end()
 })
 
+test('Malformed URL', (t) => {
+	const file = new VFile({ data: {} })
+	const tree1 = h('html', [h('head', [h('link', { rel: 'canonical', href: 'http%3A%2F%2Ffoobar.com' })])])
+	const tree2 = h('html', [h('head', [h('meta', { property: 'og:url', content: 'foobar' })])])
+	process(h(null, tree1), file)
+	t.equal('http://foobar.com', file.data.meta?.pageUrl)
+	process(h(null, tree2), file)
+	t.equal(null, file.data.meta?.pageUrl)
+	t.end()
+})
+
 test('Date', (t) => {
   const file = new VFile({ data: {} })
   const tree1 = h('html', [h('head', [h('meta', { property: 'article:published_time', content: '2017-01-01' })])])
