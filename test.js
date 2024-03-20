@@ -71,15 +71,33 @@ test('URL', (t) => {
 })
 
 test('Malformed URL', (t) => {
-	const file = new VFile({ data: {} })
-	const tree1 = h('html', [h('head', [h('link', { rel: 'canonical', href: 'http%3A%2F%2Ffoobar.com' })])])
-	const tree2 = h('html', [h('head', [h('meta', { property: 'og:url', content: 'foobar' })])])
-	process(h(null, tree1), file)
-	t.equal('http://foobar.com', file.data.meta?.pageUrl)
-	process(h(null, tree2), file)
-	t.equal(null, file.data.meta?.pageUrl)
-	t.end()
+  const file = new VFile({ data: {} })
+  const tree1 = h('html', [h('head', [h('link', { rel: 'canonical', href: 'http%3A%2F%2Ffoobar.com' })])])
+  const tree2 = h('html', [h('head', [h('meta', { property: 'og:url', content: 'foobar' })])])
+  process(h(null, tree1), file)
+  t.equal('http://foobar.com', file.data.meta?.pageUrl)
+  process(h(null, tree2), file)
+  t.equal(null, file.data.meta?.pageUrl)
+  t.end()
 })
+
+test('Feed URL', (t) => {
+  const file = new VFile({ data: {} })
+  const notFeedLink = h('html', [h('head', [h('link', { rel: 'alternate', media: 'only screen and (max-width: 640px)', href: 'http://m.foobar.com' })])])
+  const feedUrl = 'http://foobar.com/feed'
+  const makeLink = /** @param {string} type */ type => h('link', { rel: 'alternate', type, href: feedUrl })
+  const tree1 = h('html', [h('head', [notFeedLink, makeLink('application/rss+xml')])])
+  const tree2 = h('html', [h('head', [notFeedLink, makeLink('application/atom+xml')])])
+  const tree3 = h('html', [h('head', [notFeedLink, makeLink('application/json')])])
+  process(h(null, tree1), file)
+  t.equal(feedUrl, file.data.meta?.feedUrl)
+  process(h(null, tree2), file)
+  t.equal(feedUrl, file.data.meta?.feedUrl)
+  process(h(null, tree3), file)
+  t.equal(feedUrl, file.data.meta?.feedUrl)
+  t.end()
+})
+
 
 test('Date', (t) => {
   const file = new VFile({ data: {} })
