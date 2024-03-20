@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/gorango/rehype-extract-meta/compare/v3.0.0...v3.1.0) (2024-03-20)
+
+
+### Features
+
+* handle encoded & malformed urls ([611f1a3](https://github.com/gorango/rehype-extract-meta/commit/611f1a3bd95b5bd507ee53a521cdaea2337a670a))
+
+
+### Bug Fixes
+
+* feedUrl candidates, tests ([73a3988](https://github.com/gorango/rehype-extract-meta/commit/73a3988415fcf54642d4ddb5807cc12342bbc5be))
+
 ## [3.0.0](https://github.com/gorango/rehype-extract-meta/compare/v2.1.0...v3.0.0) (2024-03-11)
 
 
