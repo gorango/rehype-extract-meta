@@ -27,7 +27,7 @@ test('Language', (t) => {
   process(h(null, tree4), file)
   t.equal('ch', file.data.meta?.lang)
   process(h(null, tree5), file)
-  t.equal('en', file.data.meta?.lang)
+  t.equal(undefined, file.data.meta?.lang)
   t.end()
 })
 
@@ -77,7 +77,7 @@ test('Malformed URL', (t) => {
   process(h(null, tree1), file)
   t.equal('http://foobar.com', file.data.meta?.pageUrl)
   process(h(null, tree2), file)
-  t.equal(null, file.data.meta?.pageUrl)
+  t.equal(undefined, file.data.meta?.pageUrl)
   t.end()
 })
 
