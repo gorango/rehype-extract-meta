@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/gorango/rehype-extract-meta/compare/v3.1.0...v4.0.0) (2024-04-06)
+
+
+### Features
+
+* filter empty props; rm fallbacks for lang, title, desc ([9413a9b](https://github.com/gorango/rehype-extract-meta/commit/9413a9bf5f6bd926f6509620c4ac52b56cf2bd79))
+
+
+### Bug Fixes
+
+* update feedUrl candidates ([bc94cca](https://github.com/gorango/rehype-extract-meta/commit/bc94cca9966e02a029c9e43233b343a45e780582))
+* update props sort ([d48330a](https://github.com/gorango/rehype-extract-meta/commit/d48330a5207b15ebf35ef9d7a9cf572ebae9649f))
+
 ## [3.1.0](https://github.com/gorango/rehype-extract-meta/compare/v3.0.0...v3.1.0) (2024-03-20)
 
 
