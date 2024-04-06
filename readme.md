@@ -28,40 +28,47 @@ const processor = unified()
 
 const htmlString = `<html>...</html>`
 const vfile = processor.processSync(htmlString)
-console.log(vfile)
+console.log(vfile.data.meta)
 ```
 
-Running the above code with a valid `htmlString` will return a [VFile][vfile] containing the extracted contents in its `data` property.
-
-```js
-VFile {
-  data: {
-    meta: {
-      lang: '...',
-      pageUrl: '...',
-      feedUrl: '...',
-      imageUrl: '...',
-      title: '...',
-      author: '...',
-      date: '...',
-      description: '...',
-      keywords: ['...'],
-      publisher: '...',
-      copyright: '...',
-    }
-  },
-  messages: [],
-  history: [],
-  cwd: '...',
-  value: '...'
-}
-```
+Running the above code with a valid `htmlString` will return a [VFile][vfile]
+containing the extracted contents in its `data.meta` property, conforming to
+the type [`Meta`](#meta).
 
 ## API
 
 This package exports a single plugin function.
 
 ### `unified().use(rehypeExtractMeta)`
+
+Extract meta data from HTML.
+
+###### Returns
+
+Transform ([`Transformer`][unified-transformer]).
+
+### `Meta`
+
+Data property (TypeScript type).
+
+###### Fields
+
+- `lang` (`string`) - Language string
+- `date` (`string`) - Document date
+- `title` (`string`) - Document title
+- `description` (`string`) - Document description
+- `keywords` (`string[]`) - Document keywords
+- `author` (`string`) - Document author
+- `publisher` (`string`) - Document publisher
+- `copyright` (`string`) - Document copyright
+- `pageUrl` (`string`) - Page URL
+- `imageUrl` (`string`) - Image URL
+- `feedUrl` (`string`) - Feed URL
+
+## Types
+
+This package is fully typed with [TypeScript](https://www.typescriptlang.org).
+It exports the additional type [`Meta`](#meta).
 
 [Rehype][rehype] plugin to extract meta data from an HTML document.
 
@@ -80,7 +87,9 @@ This package exports a single plugin function.
 [size-badge]: https://badgen.net/packagephobia/publish/rehype-extract-meta
 [size]: https://packagephobia.com/result?p=rehype-extract-meta
 [rehype]: https://github.com/rehypejs/rehype
+[unified-transformer]: https://github.com/unifiedjs/unified#transformer
 [vfile]: https://github.com/vfile/vfile
 [fixtures]: https://github.com/gorango/rehype-extract-meta/tree/main/fixtures
+[bcp47Normalize]: https://github.com/wooorm/bcp-47-normalize
 [license]: license
 [author]: https://github.com/gorango
