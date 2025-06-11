@@ -29,16 +29,15 @@
     "build": "tsc --build --clean && tsc --build && type-coverage"
   },
   "dependencies": {
-    "hast-util-select": "^6.0.2",
-    "hast-util-to-string": "^3.0.0"
+    "hast-util-select": "^6.0.4",
+    "hast-util-to-string": "^3.0.1"
   },
   "devDependencies": {
     "@types/hast": "^3.0.4",
-    "@types/vfile": "^4.0.0",
-    "hastscript": "^9.0.0",
-    "tape": "^5.7.5",
-    "type-coverage": "^2.27.1",
-    "typescript": "^5.4.2",
-    "vfile": "^6.0.1"
+    "hastscript": "^9.0.1",
+    "tape": "^5.9.0",
+    "type-coverage": "^2.29.7",
+    "typescript": "^5.8.3",
+    "vfile": "^6.0.3"
   }
 }
