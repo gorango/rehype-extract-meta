@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/gorango/rehype-extract-meta/compare/v4.0.0...v4.0.1) (2025-06-11)
+
+
+### Bug Fixes
+
+* handle missing content attribute ([#2](https://github.com/gorango/rehype-extract-meta/issues/2)) ([506014b](https://github.com/gorango/rehype-extract-meta/commit/506014bae995827f27f8579fdde265053a718f6a))
+
 ## [4.0.0](https://github.com/gorango/rehype-extract-meta/compare/v3.1.0...v4.0.0) (2024-04-06)
 
 
