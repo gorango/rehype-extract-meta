@@ -202,3 +202,14 @@ test('Copyright', (t) => {
   t.equal('Qux', file.data.meta?.copyright)
   t.end()
 })
+
+test('Robots', (t) => {
+  const file = new VFile({ data: {} })
+  const tree1 = h('html', [h('head', [h('meta', { name: 'robots', content: 'index, follow' })])])
+  const tree2 = h('html', [h('head', [h('meta', { name: 'googlebot', content: 'noindex' })])])
+  process(h(null, tree1), file)
+  t.equal('index, follow', file.data.meta?.robots)
+  process(h(null, tree2), file)
+  t.equal('noindex', file.data.meta?.robots)
+  t.end()
+})

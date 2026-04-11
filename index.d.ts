@@ -13,6 +13,7 @@ export interface Meta {
   pageUrl?: string
   feedUrl?: string
   imageUrl?: string
+  robots?: string
 }
 
 /**
