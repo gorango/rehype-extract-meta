@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/gorango/rehype-extract-meta/compare/v4.0.1...v4.1.0) (2026-04-11)
+
+
+### Features
+
+* add robots to meta ([c77e2dc](https://github.com/gorango/rehype-extract-meta/commit/c77e2dcc1e8db7e277cb66d5a4037e53fd7387ad))
+* normalize date meta to ISO 8601 format ([4a8947c](https://github.com/gorango/rehype-extract-meta/commit/4a8947cadf457154c791ba9f7e83ba52599fafd3))
+
 ### [4.0.1](https://github.com/gorango/rehype-extract-meta/compare/v4.0.0...v4.0.1) (2025-06-11)
 
 

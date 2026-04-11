@@ -1,6 +1,6 @@
 {
   "name": "rehype-extract-meta",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Rehype plugin to extract meta data from an HTML document",
   "license": "MIT",
   "keywords": [
@@ -29,7 +29,8 @@
   "scripts": {
     "test": "node test.js",
     "coverage": "npx c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov node test.js",
-    "build": "tsc --build --clean && tsc --build && type-coverage"
+    "build": "tsc --build --clean && tsc --build && type-coverage",
+    "release": "npx standard-version -i changelog.md"
   },
   "dependencies": {
     "hast-util-select": "^6.0.4",
