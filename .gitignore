@@ -1,6 +1,7 @@
 coverage
 *.d.ts
 !/index.d.ts
+tsconfig.tsbuildinfo
 
 node_modules
 yarn.lock
